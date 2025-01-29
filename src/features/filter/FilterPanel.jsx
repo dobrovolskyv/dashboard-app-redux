@@ -4,8 +4,8 @@ import { Badge } from 'UI/Badge';
 import { Card } from 'UI/Card';
 import { Stack } from 'UI/Stack';
 
-import { selectFilter } from 'store/filters/filter-selectors';
-import { clearFilter,removeFilter } from 'store/filters/filter-actions';
+import { selectFilter, clearFilter, removeFilter } from './filter-slice';
+
 
 
 const FilterPanel = () => {
@@ -21,13 +21,13 @@ const FilterPanel = () => {
           {currentFilters.map((filter) => (
             <Badge
               key={filter}
-              onClick={()=>dispatch(removeFilter(filter))}
+              onClick={() => dispatch(removeFilter(filter))}
               variant="clearable">{filter}</Badge>
           ))}
         </Stack>
 
         <button className='link'
-        onClick={()=> dispatch(clearFilter)}
+          onClick={() => dispatch(clearFilter())}
         >Clear</button>
       </div>
     </Card>
